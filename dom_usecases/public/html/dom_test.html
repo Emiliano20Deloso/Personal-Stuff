@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">    <!-- Cambiado a español-->
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>User and Item API</title>
+      <link rel="stylesheet" href="../css/dom_test.css">
+      <script type="module" defer src="../js/dom_test.js"></script>
+  </head>
+  <body>
+    <h1>Inventario de Juego</h1>
+    <!-- Sección de Items -->
+    <div id="items" class="tab-content active">
+        <div class="container">
+            <!-- Panel de Crear/Actualizar Items -->
+            <h3>ITEMS</h3>
+            <button id="fetchItemsButton" type="button">Fetch Items</button>
+            <div class="panel">
+                <h2>Crear/Actualizar Item</h2>
+                <form id="itemForm">
+                    <div class="form-group">
+                        <label for="itemId">ID del Item (solo para actualizar):</label>
+                        <input type="text" id="itemId" placeholder="Dejar en blanco para crear nuevo">
+                    </div>
+                    <div class="form-group">
+                        <label for="itemName">Nombre del Item:</label>
+                        <input type="text" id="itemName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="itemType">Tipo:</label>
+                        <select id="itemType">
+                            <option value="weapon">Arma</option>
+                            <option value="armor">Armadura</option>
+                        </select>
+                    </div class="form-group">
+                    <button id="itemCrear" type="button">Crear User</button>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Panel de Buscar Items -->
+            <div class="panel">
+                <h2>Buscar Items</h2>
+                <form id="searchItemForm">
+                    <div class="form-group">
+                        <label for="searchItemId">ID del Item (opcional):</label>
+                        <input type="text" id="searchItemId" placeholder="Dejar en blanco para ver todos">
+                    </div>
+                    <div class="form-group">
+                      <button id="itemBuscar" type="button">Buscar</button>
+                    </div>
+                </form>
+                
+                <h3>Resultados</h3>
+                <div id="itemResults">
+                    <p>No hay resultados todavía.</p>
+                </div>
+            </div>
+            
+            <!-- Panel de Eliminar Item -->
+            <div class="panel">
+                <h2>Eliminar Item</h2>
+                <form id="deleteItemForm">
+                    <div class="form-group">
+                        <label for="deleteItemId">ID del Item:</label>
+                        <input type="text" id="deleteItemId" required>
+                    </div>
+                    <div class="form-group">
+                      <button id="itemEliminar" type="button">Eliminar</button>
+                    </div>
+                </form>
+                <div id="deleteItemResult"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Sección de Usuarios -->
+    <div id="users" class="tab-content">
+        <div class="container2">
+            <!-- Panel de Crear/Actualizar Usuarios -->
+             <h3>Users</h3>
+             <button id="fetchUsersButton" type="button">Fetch Users</button>
+            <div class="panel">
+                <h2>Crear/Actualizar Usuario</h2>
+                <form id="userForm">
+                    <div class="form-group">
+                        <label for="userId">ID del Usuario (solo para actualizar):</label>
+                        <input type="text" id="userId" placeholder="Dejar en blanco para crear nuevo">
+                    </div>
+                    <div class="form-group">
+                        <label for="userName">Nombre de Usuario:</label>
+                        <input type="text" id="userName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="userEmail">Email:</label>
+                        <input type="email" id="userEmail">
+                    </div>
+                    <div class="form-group">
+                        <label for="userItems">Items (IDs separados por coma):</label>
+                        <input type="text" id="userItems" placeholder="Ej: item1,item2,item3">
+                    </div>
+                    <div class="form-group">
+                        <button id="itemSafe" type="button">Crear Usuario</button>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Panel de Buscar Usuarios -->
+            <div class="panel">
+                <h2>Buscar Usuarios</h2>
+                <form id="searchUserForm">
+                    <div class="form-group">
+                        <label for="searchUserId">ID del Usuario (opcional):</label>
+                        <input type="text" id="searchUserId" placeholder="Dejar en blanco para ver todos">
+                    </div>
+                    <div class="form-group">
+                      <button id="userbuscar" type="button">Buscar</button>
+                    </div>
+                </form>
+                
+                <h3>Resultados</h3>
+                <div id="userResults">
+                    <p>No hay resultados todavía.</p>
+                </div>
+            </div>
+            
+            <!-- Panel de Eliminar Usuario -->
+            <div class="panel">
+                <h2>Eliminar Usuario</h2>
+                <form id="deleteUserForm">
+                    <div class="form-group">
+                        <label for="deleteUserId">ID del Usuario:</label>
+                        <input type="text" id="deleteUserId" required>
+                    </div>
+                    <div class="form-group">
+                      <button id="userEliminar" type="button">Eliminar</button>
+                    </div>
+                </form>
+                <div id="deleteUserResult"></div>
+            </div>
+        </div>
+    </div>
+
+
+  </body>
+</html>
+
