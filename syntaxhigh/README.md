@@ -22,7 +22,7 @@ The files you need to run this are:
 - `prueba2.cpp`
 - `prueba3.cpp`
 - `Store_proyect.cpp` 
-- `test.exs` 
+- `output.html` 
 
 The 3 `.cpp` files are for testing.
 
@@ -30,29 +30,56 @@ The 3 `.cpp` files are for testing.
 
 ## Main Functions and their Complexity
 
-### 1. read/1
-- **Complexity**: O(1) for file reading
-- The actual complexity depends on analyze/1
+# Análisis de Complejidad
 
-### 2. analyze/1
-- **Complexity**: Depends on tokenize/1 and format/1
-- File writing is O(n) where n is the size of the generated HTML
+## Complejidad (O)
 
-### 3. tokenize/1 and identify_tokens/2
-- **Complexity**: O(m) where m is the length of the source code
-- However, the execution of find_next_token/2 in each iteration adds complexity
+### Función analyze:
+- Divide el contenido en líneas: O(n) donde n es el tamaño del contenido
+- Procesa cada línea: O(n * m) donde m es la complejidad de procesar una línea
+- Complejidad total: O(n * m)
 
-### 4. find_next_token/2
-- **Complexity**: O(k) where k is the number of regex patterns (12 in your implementation)
-- For each token, it tries to match with all patterns until finding one
+### Función process_line:
+- Llama a readytoken para cada línea: O(m) donde m es la longitud de la línea
 
-### 5. format/1
-- **Complexity**: O(t) where t is the number of tokens
-- Each token must be processed to create its corresponding HTML
+### Función readytoken:
+- Para cada carácter o token en la línea, busca una coincidencia en los patrones
+- En el peor caso (si cada carácter es procesado individualmente): O(m * p) donde p es el número de patrones
+- Complejidad: O(m * p)
 
-### 6. create_html/1
-- **Complexity**: O(l) where l is the length of the token content
-- Special character replacement operations are linear with respect to content size
+### Función searchtoken:
+- Prueba cada patrón secuencialmente: O(p) donde p es el número de patrones
+- Cada coincidencia de patrón (Regex.run) tiene una complejidad de O(k) donde k depende de la complejidad de la expresión regular
+- Complejidad: O(p * k)
+
+## Análisis de Complejidad Total
+
+Combinando estos análisis, la complejidad temporal total del programa es:
+O(n * m * p * k) donde:
+
+- n: número de líneas en el archivo
+- m: longitud promedio de una línea
+- p: número de patrones (expresiones regulares)
+- k: complejidad promedio de evaluación de una expresión regular
+
+Simplificando, si consideramos el tamaño total del archivo como N = n * m, la complejidad sería:
+O(N * p * k)
+
+### Consideraciones Importantes:
+- El número de patrones (p) es constante en este programa (12 patrones).
+- La complejidad de las expresiones regulares (k) puede variar, pero también es relativamente constante para este conjunto específico.
+
+Por lo tanto, prácticamente la complejidad se simplifica a:
+O(N) - Complejidad lineal respecto al tamaño del archivo
+
+## Complejidad Espacial
+
+- Almacenamiento del contenido original: O(N)
+- Almacenamiento de líneas: O(N)
+- Acumulación de tokens HTML: O(N) con un factor constante mayor debido al marcado HTML
+
+La complejidad espacial total es:
+O(N) - Complejidad lineal respecto al tamaño del archivo
 
 # Possible Optimizations
 
