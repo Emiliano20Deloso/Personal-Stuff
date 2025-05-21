@@ -28,58 +28,21 @@ The 3 `.cpp` files are for testing.
 
 # Complexity Analysis of Syntax Highlighter in Elixir
 
-## Main Functions and their Complexity
+1. **Function Regex**
+   -The complexity that I calculate for this specifical function is O(1) because it is simply where we declared our regular expressions and it returns just the same. 
 
-# Análisis de Complejidad
+2. **Function Read**
+   -For this function, base on it purpose I would say that we have a O(n)complexity, this because we are reading a file that could consist on a simply 3 line code or a big one with 1000 lines of code.  
 
-## Complejidad (O)
+3. **Function Analyze**
+   -Analyze fullfils the function to split every line of the .cpp file that we are testing, in addition is also join the lines that are already processed and generate the .html file, considering all of this, the complexity is O(N^2).
 
-### Función analyze:
-- Divide el contenido en líneas: O(n) donde n es el tamaño del contenido
-- Procesa cada línea: O(n * m) donde m es la complejidad de procesar una línea
-- Complejidad total: O(n * m)
 
-### Función process_line:
-- Llama a readytoken para cada línea: O(m) donde m es la longitud de la línea
+4. **Function process_line**
+   -In this case considering that the function check the regex list 1 by 1, I can say it is an O(1), at the same time we are talking about a recursive function, which means it checks every single line of the code till it fine something that fits in, so at the end the complexity is O(n^2)
 
-### Función readytoken:
-- Para cada carácter o token en la línea, busca una coincidencia en los patrones
-- En el peor caso (si cada carácter es procesado individualmente): O(m * p) donde p es el número de patrones
-- Complejidad: O(m * p)
-
-### Función searchtoken:
-- Prueba cada patrón secuencialmente: O(p) donde p es el número de patrones
-- Cada coincidencia de patrón (Regex.run) tiene una complejidad de O(k) donde k depende de la complejidad de la expresión regular
-- Complejidad: O(p * k)
-
-## Análisis de Complejidad Total
-
-Combinando estos análisis, la complejidad temporal total del programa es:
-O(n * m * p * k) donde:
-
-- n: número de líneas en el archivo
-- m: longitud promedio de una línea
-- p: número de patrones (expresiones regulares)
-- k: complejidad promedio de evaluación de una expresión regular
-
-Simplificando, si consideramos el tamaño total del archivo como N = n * m, la complejidad sería:
-O(N * p * k)
-
-### Consideraciones Importantes:
-- El número de patrones (p) es constante en este programa (12 patrones).
-- La complejidad de las expresiones regulares (k) puede variar, pero también es relativamente constante para este conjunto específico.
-
-Por lo tanto, prácticamente la complejidad se simplifica a:
-O(N) - Complejidad lineal respecto al tamaño del archivo
-
-## Complejidad Espacial
-
-- Almacenamiento del contenido original: O(N)
-- Almacenamiento de líneas: O(N)
-- Acumulación de tokens HTML: O(N) con un factor constante mayor debido al marcado HTML
-
-La complejidad espacial total es:
-O(N) - Complejidad lineal respecto al tamaño del archivo
+In resume this program have a total complexity of O(n^2) because much of the complexity is base on how long is the file that we are testing, in other words, if the file to be analize is shorter this could reduce the complexity since we don´t have to analyze that much tokens, reducing the complexity maybe to a O(n)
+#
 
 # Possible Optimizations
 
@@ -109,7 +72,3 @@ O(N) - Complejidad lineal respecto al tamaño del archivo
 # Ethical Implications
 
 The ethical implications of this type of technology in society are that this can be a great help for someone who is trying to make a similar project but in another language, in addition to the fact that this also facilitates the understanding of how a programming language works in terms of knowing how to identify all its elements and at the same time makes it so that by just looking at a code you can much more easily identify what the person who wrote it meant to say.
-
-
-
-
