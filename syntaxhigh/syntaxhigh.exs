@@ -120,7 +120,6 @@ defmodule Cppreader do
     end
   end
 
-  # Formatea el HTML completo - adaptado de la función format existente
   defp format_html(body) do
     """
     <!DOCTYPE html>
@@ -154,7 +153,7 @@ defmodule Cppreader do
     """
   end
 
-  # Separar el archivo en tokens
+  # Separar el archivo en tokensr
   def tokenize(content) do
     identify_tokens(content, [])
   end
